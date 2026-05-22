@@ -98,14 +98,14 @@ def get_valid_integer(prompt, min_val=None, max_val=None):
         try:
             value = int(input(prompt))
             if min_val is not None and value < min_val:
-                print(f"Please enter a number greater than or equal to {min_val}")
+                print(f"\n  [ERROR] Please enter a number greater than or equal to {min_val}\n")
                 continue
             if max_val is not None and value > max_val:
-                print(f"Please enter a number less than or equal to {max_val}")
+                print(f"\n  [ERROR] Please enter a number less than or equal to {max_val}\n")
                 continue
             return value
         except ValueError:
-            print("Please enter a valid integer")
+            print("\n  [ERROR] Please enter a valid integer\n")
 
 
 def get_yes_no(prompt):
@@ -115,7 +115,7 @@ def get_yes_no(prompt):
             return True
         elif choice in ['n', 'no']:
             return False
-        print("Please enter 'y' or 'n'")
+        print("\n  [ERROR] Please enter 'y' or 'n'\n")
 
 
 def display_menu():
