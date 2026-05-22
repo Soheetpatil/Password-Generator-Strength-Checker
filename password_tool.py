@@ -134,10 +134,24 @@ def main():
 
     while True:
         display_menu()
-        choice = get_valid_integer("Enter your choice (1-3): ", 1, 3)
+        choice = get_valid_integer("Enter your choice (1-4): ", 1, 4)
 
         if choice == 1:
-            print("\n--- Password Generator ---")
+            print("\n--- Quick Generate ---")
+            try:
+                password = tool.generate_password(12, True, True, True, True)
+                print(f"\nGenerated Password: {password}")
+                
+                strength, reasons, suggestions = tool.check_strength(password)
+                print(f"\nPassword Strength: {strength}")
+                print("Reasons:")
+                for reason in reasons:
+                    print(f"  - {reason}")
+            except ValueError as e:
+                print(f"Error: {e}")
+
+        elif choice == 2:
+            print("\n--- Custom Generate ---")
             length = get_valid_integer("Enter password length (minimum 4): ", 4)
             use_upper = get_yes_no("Include uppercase letters? (y/n): ")
             use_lower = get_yes_no("Include lowercase letters? (y/n): ")
@@ -156,7 +170,7 @@ def main():
             except ValueError as e:
                 print(f"Error: {e}")
 
-        elif choice == 2:
+        elif choice == 3:
             print("\n--- Password Strength Checker ---")
             password = input("Enter the password to check: ").strip()
             
@@ -166,16 +180,17 @@ def main():
 
             strength, reasons, suggestions = tool.check_strength(password)
             print(f"\nPassword Strength: {strength}")
-            print("Reasons:")
-            for reason in reasons:
-                print(f"  - {reason}")
+            if reasons:
+                print("Reasons:")
+                for reason in reasons:
+                    print(f"  - {reason}")
             
             if suggestions:
                 print("\nSuggestions for improvement:")
                 for suggestion in suggestions:
                     print(f"  - {suggestion}")
 
-        elif choice == 3:
+        elif choice == 4:
             print("\nThank you for using Password Generator & Strength Checker!")
             sys.exit(0)
 
