@@ -137,21 +137,33 @@ def main():
         choice = get_valid_integer("Enter your choice (1-4): ", 1, 4)
 
         if choice == 1:
-            print("\n--- Quick Generate ---")
+            print("\n" + "-"*40)
+            print("          Quick Generate")
+            print("-"*40)
             try:
                 password = tool.generate_password(12, True, True, True, True)
                 print(f"\nGenerated Password: {password}")
                 
                 strength, reasons, suggestions = tool.check_strength(password)
-                print(f"\nPassword Strength: {strength}")
-                print("Reasons:")
-                for reason in reasons:
-                    print(f"  - {reason}")
+                print("\n" + "="*40)
+                print(f"Password Strength: {strength}")
+                print("="*40)
+                if reasons:
+                    print("\nReasons:")
+                    for reason in reasons:
+                        print(f"  • {reason}")
+                if suggestions:
+                    print("\nSuggestions for improvement:")
+                    for suggestion in suggestions:
+                        print(f"  • {suggestion}")
+                print("\n" + "-"*40)
             except ValueError as e:
-                print(f"Error: {e}")
+                print(f"\nError: {e}")
 
         elif choice == 2:
-            print("\n--- Custom Generate ---")
+            print("\n" + "-"*40)
+            print("         Custom Generate")
+            print("-"*40)
             length = get_valid_integer("Enter password length (minimum 4): ", 4)
             use_upper = get_yes_no("Include uppercase letters? (y/n): ")
             use_lower = get_yes_no("Include lowercase letters? (y/n): ")
@@ -163,28 +175,40 @@ def main():
                 print(f"\nGenerated Password: {password}")
                 
                 strength, reasons, suggestions = tool.check_strength(password)
-                print(f"\nPassword Strength: {strength}")
-                print("Reasons:")
-                for reason in reasons:
-                    print(f"  - {reason}")
+                print("\n" + "="*40)
+                print(f"Password Strength: {strength}")
+                print("="*40)
+                if reasons:
+                    print("\nReasons:")
+                    for reason in reasons:
+                        print(f"  • {reason}")
+                if suggestions:
+                    print("\nSuggestions for improvement:")
+                    for suggestion in suggestions:
+                        print(f"  • {suggestion}")
+                print("\n" + "-"*40)
             except ValueError as e:
-                print(f"Error: {e}")
+                print(f"\nError: {e}")
 
         elif choice == 3:
-            print("\n--- Password Strength Checker ---")
+            print("\n" + "-"*40)
+            print("      Password Strength Checker")
+            print("-"*40)
             password = input("Enter the password to check: ").strip()
 
             strength, reasons, suggestions = tool.check_strength(password)
-            print(f"\nPassword Strength: {strength}")
+            print("\n" + "="*40)
+            print(f"Password Strength: {strength}")
+            print("="*40)
             if reasons:
-                print("Reasons:")
+                print("\nReasons:")
                 for reason in reasons:
-                    print(f"  - {reason}")
-            
+                    print(f"  • {reason}")
             if suggestions:
                 print("\nSuggestions for improvement:")
                 for suggestion in suggestions:
-                    print(f"  - {suggestion}")
+                    print(f"  • {suggestion}")
+            print("\n" + "-"*40)
 
         elif choice == 4:
             print("\nThank you for using Password Generator & Strength Checker!")
