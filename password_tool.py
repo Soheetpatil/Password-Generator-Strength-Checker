@@ -122,9 +122,10 @@ def display_menu():
     print("\n" + "="*40)
     print("    Password Generator & Strength Checker")
     print("="*40)
-    print("1. Generate Password")
-    print("2. Check Password Strength")
-    print("3. Exit")
+    print("1. Quick Generate (12 chars, all types)")
+    print("2. Custom Generate Password")
+    print("3. Check Password Strength")
+    print("4. Exit")
     print("="*40)
 
 
