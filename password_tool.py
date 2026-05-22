@@ -173,10 +173,6 @@ def main():
         elif choice == 3:
             print("\n--- Password Strength Checker ---")
             password = input("Enter the password to check: ").strip()
-            
-            if not password:
-                print("Error: Password cannot be empty")
-                continue
 
             strength, reasons, suggestions = tool.check_strength(password)
             print(f"\nPassword Strength: {strength}")
