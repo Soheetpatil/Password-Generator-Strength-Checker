@@ -134,7 +134,7 @@ def main():
 
     while True:
         display_menu()
-        choice = get_valid_integer("Enter your choice (1-4): ", 1, 4)
+        choice = get_valid_integer("\nEnter your choice (1-4): ", 1, 4)
 
         if choice == 1:
             print("\n" + "-"*40)
